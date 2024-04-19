@@ -1,0 +1,38 @@
+﻿namespace SearchSystem.Others.JobEnums;
+
+public enum JobLanguage
+{
+    BULGARIAN,
+    ENGLISH,
+    GERMAN,
+    RUSSIAN,
+    FRENCH,
+    TURKISH,
+    SPANISH,
+    DUTCH,
+    ITALIAN,
+    ROMANIAN,
+    ARAB,
+    GREEK,
+    POLISH,
+    CZECH,
+    PORTUGUESE,
+    DANISH,
+    NORWEGIAN,
+    UKRAINIAN,
+    HEBREW,
+    SERBIAN,
+    SWEDISH,
+    FINNISH,
+    LATVIAN,
+    SLOVAK,
+    HUNGARIAN,
+    CHINESE,
+    ALBANIAN,
+    LITHUANIAN,
+    ESTONIAN,
+    SLOVENIAN,
+    THAI,
+    JAPANESE,
+    CROATIAN
+}

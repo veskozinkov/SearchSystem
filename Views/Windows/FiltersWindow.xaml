@@ -3,10 +3,123 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SearchSystem.Views.Windows"
+        xmlns:Windows="clr-namespace:SearchSystem.Views.Windows"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:JobEnums="clr-namespace:SearchSystem.Others.JobEnums"
+        xmlns:FilterEnums="clr-namespace:SearchSystem.Others.FilterEnums"
         mc:Ignorable="d"
         Title="Filters" Height="450" Width="450" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="JobCityTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="JobEnums:JobCity"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobCategoryTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="JobEnums:JobCategory"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobEmploymentTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="JobEnums:JobEmployment"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobWorkplaceTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="JobEnums:JobWorkplace"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobPositionTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="JobEnums:JobPosition"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobProviderTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="JobEnums:JobProvider"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobPaidLeaveTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="FilterEnums:JobPaidLeave"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobLanguageTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="JobEnums:JobLanguage"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="JobPostTimeTypes" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="FilterEnums:JobPostTime"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="CityComboBox" Grid.Column="0" Grid.Row="0" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobCityTypes}}"/>
+
+        <ComboBox x:Name="CategoryComboBox" Grid.Column="1" Grid.Row="0" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobCategoryTypes}}"/>
+
+        <ComboBox x:Name="EmploymentComboBox" Grid.Column="0" Grid.Row="1" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobEmploymentTypes}}"/>
+
+        <ComboBox x:Name="WorkplaceComboBox" Grid.Column="1" Grid.Row="1" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobWorkplaceTypes}}"/>
+
+        <ComboBox x:Name="PositionComboBox" Grid.Column="0" Grid.Row="2" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobPositionTypes}}"/>
+
+        <ComboBox x:Name="ProviderComboBox" Grid.Column="1" Grid.Row="2" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobProviderTypes}}"/>
+
+        <ComboBox x:Name="PaidLeaveComboBox" Grid.Column="0" Grid.Row="3" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobPaidLeaveTypes}}"/>
+
+        <ComboBox x:Name="LanguageComboBox" Grid.Column="1" Grid.Row="3" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobLanguageTypes}}"/>
+
+        <ComboBox x:Name="PostTimeComboBox" Grid.Column="0" Grid.Row="4" Margin="20 15 20 15"
+                  ItemsSource="{Binding Source={StaticResource JobPostTimeTypes}}"/>
+
+        <Button HorizontalAlignment="Center"
+                Click="ApplyFilterClick"
+                Content="Apply"
+                Grid.Row="7" Grid.ColumnSpan="2" Width="125" Height="25"/>
     </Grid>
 </Window>

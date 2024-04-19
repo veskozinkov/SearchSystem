@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SearchSystem.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace SearchSystem.Views.Windows
         public FiltersWindow()
         {
             InitializeComponent();
+        }
+
+        private void ApplyFilterClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

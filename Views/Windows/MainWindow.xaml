@@ -12,11 +12,9 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0">
-            <ListBox.BorderThickness>
-                <Thickness Left="0" Top="0" Right="1" Bottom="0"/>
-            </ListBox.BorderThickness>
-        </ListBox>
+        <ListView Grid.Column="0" BorderThickness="0">
+            
+        </ListView>
 
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -35,6 +33,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
+            
             <Button Grid.Column="1" Grid.Row="0" Content="Search" Margin="3">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -43,9 +42,9 @@
                 </Button.Resources>
             </Button>
 
-            <ListBox Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0">
+            <ListView Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0">
                 
-            </ListBox>
+            </ListView>
         </Grid>
     </Grid>
 </Window>
