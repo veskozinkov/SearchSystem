@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SearchSystem"
         mc:Ignorable="d"
-        Title="Real Estate Finder" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Search Project" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>

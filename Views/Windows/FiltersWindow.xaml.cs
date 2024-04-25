@@ -1,4 +1,6 @@
 ﻿using SearchSystem.Database;
+using SearchSystem.Models;
+using SearchSystem.test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,9 @@ namespace SearchSystem.Views.Windows
         public FiltersWindow()
         {
             InitializeComponent();
+
+            var dynamicFilterView = new DynamicFilterView(typeof(Job));
+            FilterSection.Children.Add(dynamicFilterView);
         }
 
         private void ApplyFilterClick(object sender, RoutedEventArgs e)

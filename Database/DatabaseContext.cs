@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SearchSystem.Models;
-using SearchSystem.Others.JobEnums;
+using SearchSystem.Others;
 
 namespace SearchSystem.Database
 {

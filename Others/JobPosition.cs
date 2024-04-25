@@ -1,4 +1,4 @@
-﻿namespace SearchSystem.Others.JobEnums;
+﻿namespace SearchSystem.Others;
 
 public enum JobPosition
 {
