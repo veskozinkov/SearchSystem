@@ -1,6 +1,6 @@
 ﻿using SearchSystem.Database;
 using SearchSystem.Models;
-using SearchSystem.test;
+using SearchSystem.Views.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +30,7 @@ namespace SearchSystem.Views.Windows
             FilterSection.Children.Add(dynamicFilterView);
         }
 
-        private void ApplyFilterClick(object sender, RoutedEventArgs e)
+        private void ApplyFilters_Click(object sender, RoutedEventArgs e)
         {
 
         }

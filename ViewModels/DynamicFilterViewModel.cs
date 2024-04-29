@@ -9,7 +9,7 @@ using System.Windows.Data;
 using System.Windows;
 using System.Reflection;
 
-namespace SearchSystem.test
+namespace SearchSystem.ViewModels
 {
     class DynamicFilterViewModel
     {
@@ -29,13 +29,10 @@ namespace SearchSystem.test
 
         private void PopulateFilterOptions(Type modelType)
         {
-            var properties = modelType.GetProperties()
-                                      //.Where(prop => prop.PropertyType.IsEnum)
-                                      .ToList();
+            var properties = modelType.GetProperties().ToList();
 
             foreach (var prop in properties)
             {
-                //var enumValues = Enum.GetValues(prop.PropertyType).Cast<object>();
                 Properties[prop.Name] = prop;
             }
         }

@@ -26,18 +26,18 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="0" Grid.Row="0" Content="Filters" Margin="3" Click="OpenFiltersWindow">
+            <Button Grid.Column="0" Grid.Row="0" Content="Search" Width="100" Height="50">
                 <Button.Resources>
                     <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="50"/>
+                        <Setter Property="CornerRadius" Value="35"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            
-            <Button Grid.Column="1" Grid.Row="0" Content="Search" Margin="3">
+
+            <Button Grid.Column="1" Grid.Row="0" Content="Filters" Width="100" Height="50" Click="OpenFiltersWindow">
                 <Button.Resources>
                     <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="50"/>
+                        <Setter Property="CornerRadius" Value="35"/>
                     </Style>
                 </Button.Resources>
             </Button>

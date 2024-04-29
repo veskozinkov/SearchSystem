@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SearchSystem.Others;
+using SearchSystem.Others.Enums.Job;
 
 namespace SearchSystem.Models
 {
@@ -19,12 +19,12 @@ namespace SearchSystem.Models
         public JobEmployment Employment { get; set; }
         public bool WithoutExperience { get; set; }
         public bool RemoteInterview { get; set; }
-        public List<JobWorkplace> Workplaces { get; set; }
+        public JobWorkplace Workplace { get; set; }
         public JobPosition Position { get; set; }
         public JobProvider Provider { get; set; }
         public int Salary { get; set; }
-        public int PaidLeave { get; set; }
-        public List<JobLanguage> Languages { get; set; }
+        public JobPaidLeave PaidLeave { get; set; }
+        public JobLanguage Language { get; set; }
         public DateTime PostTime { get; set; }
     }
 }

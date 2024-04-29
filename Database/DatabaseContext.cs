@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SearchSystem.Models;
-using SearchSystem.Others;
+using SearchSystem.Others.Enums.Job;
 
 namespace SearchSystem.Database
 {
@@ -35,12 +35,12 @@ namespace SearchSystem.Database
                 Employment = JobEmployment.FULL_TIME,
                 WithoutExperience = false,
                 RemoteInterview = true,
-                Workplaces = new List<JobWorkplace> { JobWorkplace.OFFICE },
+                Workplace = JobWorkplace.OFFICE,
                 Position = JobPosition.EXPERT_SPECIALIST,
                 Provider = JobProvider.EMPLOYER,
                 Salary = 5000,
-                PaidLeave = 25,
-                Languages = new List<JobLanguage> { JobLanguage.ENGLISH, JobLanguage.GERMAN },
+                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
+                Language = JobLanguage.ENGLISH,
                 PostTime = DateTime.Now.AddDays(-10)
             };
             modelBuilder.Entity<Job>().HasData(job1);
@@ -53,12 +53,12 @@ namespace SearchSystem.Database
                 Employment = JobEmployment.PART_TIME,
                 WithoutExperience = true,
                 RemoteInterview = false,
-                Workplaces = new List<JobWorkplace> { JobWorkplace.HYBRID },
+                Workplace = JobWorkplace.HYBRID,
                 Position = JobPosition.EMPLOYEE_WORKER,
                 Provider = JobProvider.AGENCIES,
                 Salary = 2500,
-                PaidLeave = 20,
-                Languages = new List<JobLanguage> { JobLanguage.BULGARIAN, JobLanguage.ENGLISH },
+                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
+                Language = JobLanguage.BULGARIAN,
                 PostTime = DateTime.Now.AddDays(-15)
             };
             modelBuilder.Entity<Job>().HasData(job2);
@@ -71,12 +71,12 @@ namespace SearchSystem.Database
                 Employment = JobEmployment.FULL_TIME,
                 WithoutExperience = false,
                 RemoteInterview = false,
-                Workplaces = new List<JobWorkplace> { JobWorkplace.OFFICE },
+                Workplace = JobWorkplace.OFFICE,
                 Position = JobPosition.MANAGEMENT,
                 Provider = JobProvider.EMPLOYER,
                 Salary = 8000,
-                PaidLeave = 30,
-                Languages = new List<JobLanguage> { JobLanguage.BULGARIAN, JobLanguage.ENGLISH },
+                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
+                Language = JobLanguage.BULGARIAN,
                 PostTime = DateTime.Now.AddDays(-5)
             };
             modelBuilder.Entity<Job>().HasData(job3);
@@ -89,12 +89,12 @@ namespace SearchSystem.Database
                 Employment = JobEmployment.FULL_TIME,
                 WithoutExperience = true,
                 RemoteInterview = true,
-                Workplaces = new List<JobWorkplace> { JobWorkplace.HOME },
+                Workplace = JobWorkplace.HOME,
                 Position = JobPosition.EXPERT_SPECIALIST,
                 Provider = JobProvider.EMPLOYER,
                 Salary = 5500,
-                PaidLeave = 25,
-                Languages = new List<JobLanguage> { JobLanguage.ENGLISH },
+                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
+                Language = JobLanguage.ENGLISH,
                 PostTime = DateTime.Now.AddDays(-20)
             };
             modelBuilder.Entity<Job>().HasData(job4);
@@ -107,12 +107,12 @@ namespace SearchSystem.Database
                 Employment = JobEmployment.FULL_TIME,
                 WithoutExperience = false,
                 RemoteInterview = false,
-                Workplaces = new List<JobWorkplace> { JobWorkplace.OFFICE },
+                Workplace = JobWorkplace.OFFICE,
                 Position = JobPosition.EMPLOYEE_WORKER,
                 Provider = JobProvider.EMPLOYER,
                 Salary = 4500,
-                PaidLeave = 20,
-                Languages = new List<JobLanguage> { JobLanguage.BULGARIAN },
+                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
+                Language = JobLanguage.BULGARIAN,
                 PostTime = DateTime.Now.AddDays(-25)
             };
             modelBuilder.Entity<Job>().HasData(job5);

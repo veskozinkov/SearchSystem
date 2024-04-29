@@ -4,18 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SearchSystem"
-        xmlns:local2="clr-namespace:SearchSystem.test"
         mc:Ignorable="d"
-        Title="Filters" SizeToContent="Height" Width="400" WindowStartupLocation="CenterScreen">
+        Title="Filters" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Filter Section -->
-        <StackPanel x:Name="FilterSection" Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <!-- DynamicFilterView will be added dynamically in the code-behind -->
-        </StackPanel>
+        <StackPanel x:Name="FilterSection" Grid.Row="0" Orientation="Horizontal" Margin="10"/>
+
+        <Button x:Name="ApplyFilters" Grid.Row="1" Content="Apply" Margin="0 0 0 15" Width="75" Height="25" Click="ApplyFilters_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>
