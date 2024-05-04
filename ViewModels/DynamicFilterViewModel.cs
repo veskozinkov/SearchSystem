@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows;
 using System.Reflection;
+using SearchSystem.Others.Helpers;
 
 namespace SearchSystem.ViewModels
 {
@@ -33,7 +34,7 @@ namespace SearchSystem.ViewModels
 
             foreach (var prop in properties)
             {
-                Properties[prop.Name] = prop;
+                Properties[prop.ToDisplayName()] = prop;
             }
         }
     }

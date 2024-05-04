@@ -1,4 +1,5 @@
-﻿using SearchSystem.Views.Windows;
+﻿using SearchSystem.Others.Markers;
+using SearchSystem.Views.Windows;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,13 @@ namespace SearchSystem
         private void OpenFiltersWindow(object sender, RoutedEventArgs e)
         {
             FiltersWindow filtersWindow = new FiltersWindow();
+            filtersWindow.Owner = this;
             filtersWindow.Show();
+        }
+
+        public void ReceiveFilters(List<PropertyFilter> filters)
+        {
+
         }
     }
 }
