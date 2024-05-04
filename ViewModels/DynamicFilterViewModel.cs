@@ -14,28 +14,23 @@ namespace SearchSystem.ViewModels
 {
     class DynamicFilterViewModel
     {
-        private Dictionary<string, PropertyInfo> _properties;
-
-        public Dictionary<string, PropertyInfo> Properties
-        {
-            get { return _properties; }
-            set { _properties = value; }
-        }
+        public Type ModelType { get; set; }
 
         public DynamicFilterViewModel(Type modelType)
         {
-            Properties = new Dictionary<string, PropertyInfo>();
-            PopulateFilterOptions(modelType);
+            ModelType = modelType;
         }
 
-        private void PopulateFilterOptions(Type modelType)
+        public List<UIElement> GenerateFilterUiElements()
         {
-            var properties = modelType.GetProperties().ToList();
+            List<UIElement> uIElements = new List<UIElement>();
 
-            foreach (var prop in properties)
+            foreach (var prop in ModelType.GetProperties().ToList())
             {
-                Properties[prop.ToDisplayName()] = prop;
+                uIElements.Add(PropertyToView.Parse(new KeyValuePair<string, PropertyInfo>(prop.ToDisplayName(), prop)));
             }
+
+            return uIElements;
         }
     }
 }

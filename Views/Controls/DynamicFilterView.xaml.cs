@@ -34,9 +34,8 @@ namespace SearchSystem.Views.Controls
 
         private void PopulateFilters()
         {
-            foreach (var property in (DataContext as DynamicFilterViewModel).Properties)
+            foreach (var element in (DataContext as DynamicFilterViewModel).GenerateFilterUiElements())
             {
-                var element = PropertyToView.Parse(property);
                 if (element != null) FilterPanel.Children.Add(element);
             }
         }
