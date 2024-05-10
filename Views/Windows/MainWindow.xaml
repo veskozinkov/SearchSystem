@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SearchSystem"
+        xmlns:local2="clr-namespace:SearchSystem.Views.Controls"
         mc:Ignorable="d"
         Title="Search Project" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -42,17 +43,7 @@
                 </Button.Resources>
             </Button>
 
-            <ListView Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0"
-                      ItemsSource="{Binding Path=Filters}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding PropertyName}" FontWeight="Bold" />
-                            <TextBlock Text="{Binding DisplayValue}" Margin="10,0,0,0" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <local2:FiltersList x:Name="FiltersList" Grid.Row="1" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </Window>

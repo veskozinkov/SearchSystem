@@ -17,7 +17,14 @@ namespace SearchSystem.Models
 
         private string GetDisplayValue()
         {
-            return Value.ToString();
+            if (Value.GetType().IsEnum)
+            {
+                return (Value as Enum).ToDescriptionString();
+            }
+            else
+            {
+                return Value.ToString();
+            }
         }
     }
 }

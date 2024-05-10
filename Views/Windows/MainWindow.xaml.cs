@@ -35,7 +35,13 @@ namespace SearchSystem
 
         public void ReceiveFilters(List<PropertyFilter> filters)
         {
-            (DataContext as MainWindowViewModel).Filters = filters;
+            FiltersListViewModel filtersListViewModel = FiltersList.DataContext as FiltersListViewModel;
+            filtersListViewModel.FiltersList.Clear();
+
+            foreach (PropertyFilter filter in filters)
+            {
+                filtersListViewModel.FiltersList.Add(filter);
+            }
         }
     }
 }
