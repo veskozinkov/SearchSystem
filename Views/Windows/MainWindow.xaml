@@ -42,8 +42,16 @@
                 </Button.Resources>
             </Button>
 
-            <ListView Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0">
-                
+            <ListView Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0"
+                      ItemsSource="{Binding Path=Filters}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding PropertyName}" FontWeight="Bold" />
+                            <TextBlock Text="{Binding DisplayValue}" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </Grid>
     </Grid>

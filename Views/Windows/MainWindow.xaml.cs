@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SearchSystem.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace SearchSystem
 {
@@ -21,6 +23,7 @@ namespace SearchSystem
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
 
         private void OpenFiltersWindow(object sender, RoutedEventArgs e)
@@ -32,7 +35,7 @@ namespace SearchSystem
 
         public void ReceiveFilters(List<PropertyFilter> filters)
         {
-
+            (DataContext as MainWindowViewModel).Filters = filters;
         }
     }
 }
