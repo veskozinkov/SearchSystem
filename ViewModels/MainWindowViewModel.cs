@@ -11,9 +11,11 @@ namespace SearchSystem.ViewModels
 {
     internal class MainWindowViewModel
     {
-        public MainWindowViewModel()
+        public Type ModelType { get; set; }
+
+        public MainWindowViewModel(Type modelType)
         {
-            
+            ModelType = modelType;
         }
     }
 }

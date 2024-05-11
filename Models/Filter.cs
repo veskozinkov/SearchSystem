@@ -9,10 +9,10 @@ using SearchSystem.Others.Markers;
 
 namespace SearchSystem.Models
 {
-    internal class Filter<T> : PropertyFilter
+    public class Filter : PropertyFilter
     {
         public string PropertyName { get; set; }
-        public T? Value { get; set; }
+        public object? Value { get; set; }
         public string DisplayValue => GetDisplayValue();
 
         private string GetDisplayValue()

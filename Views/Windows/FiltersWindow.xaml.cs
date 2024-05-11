@@ -27,11 +27,11 @@ namespace SearchSystem.Views.Windows
     /// </summary>
     public partial class FiltersWindow : Window
     {
-        public FiltersWindow()
+        public FiltersWindow(Type modelType)
         {
             InitializeComponent();
 
-            var dynamicFilterView = new DynamicFilterView(typeof(Job));
+            var dynamicFilterView = new DynamicFilterView(modelType);
             FilterSection.Children.Add(dynamicFilterView);
             FilterSection.RegisterName(nameof(DynamicFilterView), dynamicFilterView);
         }
@@ -55,7 +55,7 @@ namespace SearchSystem.Views.Windows
                         {
                             Type enumType = TypeHelper.getTypeByName(comboBox.Name)!;
                             value = comboBox.SelectedItem.ToString()!.ToEnum(enumType);
-                            filters.Add(new Filter<Enum> { PropertyName = stackPanel.Name, Value = value });
+                            filters.Add(new Filter { PropertyName = stackPanel.Name, Value = value });
                         }
 
                         continue;
@@ -77,7 +77,7 @@ namespace SearchSystem.Views.Windows
                             if (textBox.Text.Length != 0)
                             {
                                 value = (int.Parse(textBox.Text), toggleButton.Content.ToString()!.ToEnum(enumType)!);
-                                filters.Add(new Filter<(int, Enum)?> { PropertyName = stackPanel.Name, Value = value });
+                                filters.Add(new Filter { PropertyName = stackPanel.Name, Value = value });
                             }
 
                             continue;
@@ -92,14 +92,14 @@ namespace SearchSystem.Views.Windows
                             if (datePicker.SelectedDate.HasValue)
                             {
                                 value = (datePicker.SelectedDate.Value, toggleButton.Content.ToString()!.ToEnum(enumType)!);
-                                filters.Add(new Filter<(DateTime, Enum)?> { PropertyName = stackPanel.Name, Value = value });
+                                filters.Add(new Filter { PropertyName = stackPanel.Name, Value = value });
                             }
                         }
                     }
                 }
                 else if (filter is CheckBox checkBox)
                 {
-                    filters.Add(new Filter<bool?> { PropertyName = checkBox.Name, Value = checkBox.IsChecked });
+                    filters.Add(new Filter { PropertyName = checkBox.Name, Value = checkBox.IsChecked });
                 }
             }
 

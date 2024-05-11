@@ -51,7 +51,7 @@ namespace SearchSystem.Database
                 City = JobCity.VARNA,
                 Category = JobCategory.RESTAURANTS_HOTELS_TOURISM,
                 Employment = JobEmployment.PART_TIME,
-                WithoutExperience = true,
+                WithoutExperience = false,
                 RemoteInterview = false,
                 Workplace = JobWorkplace.HYBRID,
                 Position = JobPosition.EMPLOYEE_WORKER,

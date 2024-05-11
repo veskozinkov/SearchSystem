@@ -10,19 +10,9 @@ using System.Windows.Input;
 
 namespace SearchSystem.ViewModels
 {
-    class FiltersListViewModel : INotifyPropertyChanged
+    class FiltersListViewModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private ObservableCollection<PropertyFilter> _filters;
-
-        public ObservableCollection<PropertyFilter> FiltersList
-        {
-            get { return _filters; }
-            set
-            {
-                _filters = value;
-            }
-        }
+        public ObservableCollection<PropertyFilter> FiltersList { get; set; }
 
         public FiltersListViewModel()
         {
