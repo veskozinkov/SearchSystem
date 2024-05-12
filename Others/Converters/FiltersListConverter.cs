@@ -3,6 +3,7 @@ using SearchSystem.Models;
 using SearchSystem.Others.Helpers;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -36,7 +37,28 @@ namespace SearchSystem.Others.Converters
             }
             else
             {
-                convertedValue = filter.Value.ToString();
+                if (filter.Value is ITuple tuple)
+                {
+                    if (tuple[1] is FilterMode enumVal)
+                    {
+                        convertedValue = enumVal.ToFilterModeDescription() + " " + tuple[0];
+                    }
+                    else
+                    {
+                        if (tuple[1] is DateTime date)
+                        {
+                            convertedValue = date + " " + tuple[0];
+                        }
+                        else
+                        {
+                            convertedValue = filter.Value.ToString();
+                        }
+                    }
+                }
+                else
+                {
+                    convertedValue = filter.Value.ToString();
+                }
             }
 
             TextBlock textBlock = new TextBlock();

@@ -31,22 +31,24 @@ namespace SearchSystem.Database
 
         private static List<dynamic> FilterRecords(IEnumerable<dynamic> records, ObservableCollection<Filter> filters)
         {
-            List<dynamic> filteredRecords;
-            int numOfSubtractedFilters = -1;
+            List<dynamic> filteredRecords = new List<dynamic>();
 
-            do
+            for (int i = 0; i < filters.Count(); i++)
             {
-                filteredRecords = new List<dynamic>(records);
-                numOfSubtractedFilters++;
+                Filter filter = (Filter)filters[i];
 
-                for (int i = 0; i < filters.Count() - numOfSubtractedFilters; i++)
+                if (string.IsNullOrEmpty(filter.PropertyName) || filter.Value == null) continue;
+                records = records.Where(record => MatchesFilter(record, filter.PropertyName, filter.Value)).ToList();
+
+                if (records.Count() > 0)
                 {
-                    Filter filter = (Filter)filters[i];
-
-                    if (string.IsNullOrEmpty(filter.PropertyName) || filter.Value == null) continue;
-                    filteredRecords = filteredRecords.Where(record => MatchesFilter(record, filter.PropertyName, filter.Value)).ToList();
+                    filteredRecords = records.ToList();
                 }
-            } while (filteredRecords.Count() == 0);
+                else
+                {
+                    break;
+                }
+            }
 
             return filteredRecords;
         }

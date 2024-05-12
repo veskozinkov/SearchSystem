@@ -48,5 +48,15 @@ namespace SearchSystem.Others.Helpers
 
             return null;
         }
+
+        public static string ToFilterModeDescription<T>(this T value) where T : Enum
+        {
+            FilterModeDescriptionAttribute[] attributes = (FilterModeDescriptionAttribute[])value
+                .GetType()
+                .GetField(value.ToString())!
+                .GetCustomAttributes(typeof(FilterModeDescriptionAttribute), false);
+
+            return attributes.Length > 0 ? attributes[0].FilterModeDescription : string.Empty;
+        }
     }
 }
