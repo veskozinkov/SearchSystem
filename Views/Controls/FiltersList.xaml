@@ -18,7 +18,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding PropertyName}" FontWeight="Bold" />
+                        <TextBlock Text="{Binding DisplayPropertyName}" FontWeight="Bold" />
                         <TextBlock Text="{Binding DisplayValue}" Margin="10,0,0,0" />
                     </StackPanel>
                 </DataTemplate>

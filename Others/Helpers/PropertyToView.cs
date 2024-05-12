@@ -26,7 +26,10 @@ namespace SearchSystem.Others.Helpers
 
             foreach (var prop in properties)
             {
-                uIElements.Add(Parse(new KeyValuePair<string, PropertyInfo>(prop.ToDisplayName(), prop))!);
+                if (prop.IsFilterable())
+                {
+                    uIElements.Add(Parse(new KeyValuePair<string, PropertyInfo>(prop.ToDisplayName(), prop))!);
+                }
             }
 
             return uIElements;
@@ -38,7 +41,7 @@ namespace SearchSystem.Others.Helpers
             {
                 return EnumToView(property);
             }
-            else if (property.Value.PropertyType == typeof(int) && !property.Key.Equals("Id"))
+            else if (property.Value.PropertyType == typeof(int))
             {
                 return IntegerToView(property);
             }
@@ -97,7 +100,7 @@ namespace SearchSystem.Others.Helpers
 
         private static StackPanel? IntegerToView(KeyValuePair<string, PropertyInfo> property)
         {
-            if (property.Value.PropertyType == typeof(int) && !property.Key.Equals("ID"))
+            if (property.Value.PropertyType == typeof(int))
             {
                 var label = new Label
                 {

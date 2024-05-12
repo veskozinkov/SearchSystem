@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace SearchSystem.Others.Helpers
 {
-    internal static class EnumExtensions
+    public static class EnumExtensions
     {
         public static string ToDescriptionString<T>(this T value) where T : Enum
         {

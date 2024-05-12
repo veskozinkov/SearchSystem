@@ -21,5 +21,11 @@ namespace SearchSystem.Others.Helpers
 
             return propertyInfo.Name;
         }
+
+        public static bool IsFilterable(this PropertyInfo propertyInfo)
+        {
+            var filterableAttribute = propertyInfo.GetCustomAttribute<FilterableAttribute>(false);
+            return filterableAttribute != null && filterableAttribute.Filterable;
+        }
     }
 }
