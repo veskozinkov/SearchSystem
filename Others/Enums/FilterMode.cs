@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-public enum IntegerFilterMode
+public enum FilterMode
 {
     [Description("=")]
     EXACT,

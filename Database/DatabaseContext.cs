@@ -51,7 +51,7 @@ namespace SearchSystem.Database
                 Salary = 5000,
                 PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
                 Language = JobLanguage.ENGLISH,
-                PostTime = DateTime.Now.AddDays(-10)
+                PostTime = DateTime.Now.AddDays(-10).Date
             };
             modelBuilder.Entity<Job>().HasData(job1);
 
@@ -69,7 +69,7 @@ namespace SearchSystem.Database
                 Salary = 2500,
                 PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
                 Language = JobLanguage.BULGARIAN,
-                PostTime = DateTime.Now.AddDays(-15)
+                PostTime = DateTime.Now.AddDays(-15).Date
             };
             modelBuilder.Entity<Job>().HasData(job2);
 
@@ -87,7 +87,7 @@ namespace SearchSystem.Database
                 Salary = 8000,
                 PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
                 Language = JobLanguage.BULGARIAN,
-                PostTime = DateTime.Now.AddDays(-5)
+                PostTime = DateTime.Now.AddDays(-5).Date
             };
             modelBuilder.Entity<Job>().HasData(job3);
 
@@ -105,7 +105,7 @@ namespace SearchSystem.Database
                 Salary = 5500,
                 PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
                 Language = JobLanguage.ENGLISH,
-                PostTime = DateTime.Now.AddDays(-20)
+                PostTime = DateTime.Now.AddDays(-20).Date
             };
             modelBuilder.Entity<Job>().HasData(job4);
 
@@ -123,7 +123,7 @@ namespace SearchSystem.Database
                 Salary = 4500,
                 PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
                 Language = JobLanguage.BULGARIAN,
-                PostTime = DateTime.Now.AddDays(-25)
+                PostTime = DateTime.Now.AddDays(-25).Date
             };
             modelBuilder.Entity<Job>().HasData(job5);
         }

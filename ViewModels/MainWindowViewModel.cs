@@ -58,7 +58,7 @@ namespace SearchSystem.ViewModels
         public void Search(object obj)
         {
             FiltersListViewModel filtersListViewModel = ((obj as FiltersList)!.DataContext as FiltersListViewModel)!;
-            _mainWindowService.InvokeSearchCompletedEvent(DatabaseHelper.Search(filtersListViewModel.FiltersList));
+            _mainWindowService.InvokeSearchCompletedEvent(DatabaseSearch.Search(filtersListViewModel.FiltersList));
         }
     }
 }

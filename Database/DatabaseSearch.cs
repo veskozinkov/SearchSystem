@@ -8,13 +8,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SearchSystem.Database
 {
-    class DatabaseHelper
+    class DatabaseSearch
     {
         public static dynamic Search(ObservableCollection<PropertyFilter> filters)
         {
@@ -38,23 +40,41 @@ namespace SearchSystem.Database
             return records;
         }
 
-        private static dynamic ApplyFilter(dynamic records, string propertyName, object value)
+        private static dynamic ApplyFilter(dynamic records, string propertyName, dynamic value)
         {
-            /*Type genericType = typeof(List<>).MakeGenericType(DatabaseContext.ModelType);
-            records = Activator.CreateInstance(genericType)!;*/
-
             var recordsList = (IEnumerable<dynamic>)records;
             return recordsList.Where(record => MatchesFilter(record, propertyName, value)).ToList();
         }
 
-        private static bool MatchesFilter(object record, string propertyName, object value)
+        private static bool MatchesFilter(object record, string propertyName, dynamic value)
         {
             var property = record.GetType().GetProperty(propertyName);
             if (property == null) return false;
 
-            var recordValue = property.GetValue(record);
+            FilterMode filterMode = FilterMode.EXACT;
+            dynamic propertyValue = property.GetValue(record);
 
-            return recordValue != null && recordValue.Equals(value);
+            if (value is ITuple)
+            {
+                filterMode = value.Item2;
+                value = value.Item1;
+            }
+
+            switch(filterMode)
+            {
+                case FilterMode.LESS_THAN:
+                    {
+                        return propertyValue != null && propertyValue < value;
+                    }
+
+                    case FilterMode.GREATER_THAN:
+                    {
+                        return propertyValue != null && propertyValue > value;
+                    }
+
+                    default:
+                        return propertyValue != null && propertyValue == value;
+            }
         }
     }
 }

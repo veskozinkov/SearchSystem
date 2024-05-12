@@ -42,7 +42,7 @@ namespace SearchSystem.Others.Helpers
                     if (stackPanel1 != null)
                     {
                         ToggleButton toggleButton = stackPanel1.Children.OfType<ToggleButton>().FirstOrDefault()!;
-                        Type enumType = TypeHelper.getTypeByName(nameof(IntegerFilterMode))!;
+                        Type enumType = TypeHelper.getTypeByName(nameof(FilterMode))!;
 
                         TextBox textBox = stackPanel1.Children.OfType<TextBox>().FirstOrDefault()!;
 
