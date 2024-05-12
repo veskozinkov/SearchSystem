@@ -4,6 +4,7 @@ using System.Windows.Input;
 using SearchSystem.Models;
 using SearchSystem.ViewModels;
 using SearchSystem.Services.FiltersListServices;
+using System.Windows.Media;
 
 namespace SearchSystem.Views.Controls
 {
@@ -22,7 +23,7 @@ namespace SearchSystem.Views.Controls
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is ListViewItem listViewItem && listViewItem.DataContext is Filter item)
+            if (sender is ContentPresenter listViewItem && listViewItem.DataContext is Filter item)
             {
                 DragDrop.DoDragDrop(listViewItem, new DataObject(DataFormats.Serializable, item), DragDropEffects.Move);
             }

@@ -11,17 +11,27 @@
         <local2:FiltersListConverter x:Key="FiltersListConverter" />
     </UserControl.Resources>
     <Grid>
-        <ListView x:Name="ListView" BorderThickness="0" ItemsSource="{Binding Path=FiltersList}"
+        <ListView x:Name="ListView" BorderThickness="0" ItemsSource="{Binding Path=FiltersList}" HorizontalContentAlignment="Stretch"
                   AllowDrop="True"
                   Drop="ListView_Drop">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
-                </Style>
-            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ContentPresenter Content="{Binding Converter={StaticResource FiltersListConverter}}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ContentPresenter Grid.Column="0" Content="{Binding Converter={StaticResource FiltersListConverter}}" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown" />
+                        <Button x:Name="DeleteFilter" Grid.Column="1" Content="X" Width="20" Height="20" HorizontalAlignment="Right"
+                                Command="{Binding DataContext.DeleteFilterCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                CommandParameter="{Binding}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

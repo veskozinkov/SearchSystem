@@ -16,7 +16,7 @@ namespace SearchSystem.Services.FiltersListServices
             _filtersList = filtersList;
         }
 
-        public void InvokeFiltersAddedEvent()
+        public void InvokeFiltersChangedEvent()
         {
             _filtersList.InvokeFiltersAddedEvent();
         }

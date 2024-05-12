@@ -9,6 +9,6 @@ namespace SearchSystem.Services.FiltersListServices
 {
     interface IFiltersListService
     {
-        public void InvokeFiltersAddedEvent();
+        public void InvokeFiltersChangedEvent();
     }
 }

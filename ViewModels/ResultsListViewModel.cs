@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SearchSystem.ViewModels
 {
@@ -25,10 +26,17 @@ namespace SearchSystem.ViewModels
         {
             ResultsList.Clear();
 
-            foreach (object obj in e)
+            if (e.Count > 0)
             {
-                dynamic typeObj = Convert.ChangeType(obj, DatabaseContext.ModelType);
-                ResultsList.Add(typeObj);
+                foreach (object obj in e)
+                {
+                    dynamic typeObj = Convert.ChangeType(obj, DatabaseContext.ModelType);
+                    ResultsList.Add(typeObj);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Could not find any records that match your combination of filters!", "No records", MessageBoxButton.OK);
             }
         }
     }

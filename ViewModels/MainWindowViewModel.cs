@@ -11,16 +11,19 @@ namespace SearchSystem.ViewModels
     {
         private readonly MainWindowService _mainWindowService;
 
-        public ICommand OpenFiltersWindowCommand { get; set; }
+        public ICommand ClearCommand { get; set; }
 
         public ICommand SearchCommand { get; set; }
+
+        public ICommand OpenFiltersWindowCommand { get; set; }
 
         public MainWindowViewModel(MainWindowService mainWindowService)
         {
             _mainWindowService = mainWindowService;
 
-            OpenFiltersWindowCommand = new RelayCommand(CanOpenFiltersWindow, OpenFiltersWindow);
+            ClearCommand = new RelayCommand(CanClear, Clear);
             SearchCommand = new RelayCommand(CanSearch, Search);
+            OpenFiltersWindowCommand = new RelayCommand(CanOpenFiltersWindow, OpenFiltersWindow);
 
             FiltersList.FiltersAdded += FiltersList_FiltersAdded;
         }
@@ -30,15 +33,15 @@ namespace SearchSystem.ViewModels
             ((RelayCommand) SearchCommand).RaiseCanExecuteChanged();
         }
 
-        private bool CanOpenFiltersWindow(object obj)
+        private bool CanClear(object obj)
         {
-            return true;
+            return obj is ResultsList;
         }
 
-        public void OpenFiltersWindow(object obj)
+        public void Clear(object obj)
         {
-            FiltersWindow filtersWindow = new FiltersWindow();
-            filtersWindow.Show();
+            ResultsList resultsList = (ResultsList)obj;
+            (resultsList.DataContext as ResultsListViewModel)!.ResultsList.Clear();
         }
 
         private bool CanSearch(object obj)
@@ -50,6 +53,17 @@ namespace SearchSystem.ViewModels
         {
             FiltersListViewModel filtersListViewModel = ((obj as FiltersList)!.DataContext as FiltersListViewModel)!;
             _mainWindowService.InvokeSearchCompletedEvent(DatabaseSearch.Filter(filtersListViewModel.FiltersList));
+        }
+
+        private bool CanOpenFiltersWindow(object obj)
+        {
+            return true;
+        }
+
+        public void OpenFiltersWindow(object obj)
+        {
+            FiltersWindow filtersWindow = new FiltersWindow();
+            filtersWindow.Show();
         }
     }
 }

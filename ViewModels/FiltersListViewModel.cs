@@ -1,8 +1,13 @@
-﻿using SearchSystem.Models;
+﻿using SearchSystem.Commands;
+using SearchSystem.Models;
+using SearchSystem.Others.Helpers;
 using SearchSystem.Services.FiltersListServices;
+using SearchSystem.Views.Controls;
 using SearchSystem.Views.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SearchSystem.ViewModels
 {
@@ -12,12 +17,15 @@ namespace SearchSystem.ViewModels
 
         public ObservableCollection<Filter> FiltersList { get; set; }
 
+        public ICommand DeleteFilterCommand { get; set; }
+
         public FiltersListViewModel(FiltersListService filtersListService)
         {
             _filtersListService = filtersListService;
             FiltersList = new ObservableCollection<Filter>();
 
             FiltersWindow.FiltersSelected += FiltersWindow_FiltersSelected;
+            DeleteFilterCommand = new RelayCommand(CanDeleteFilter, DeleteFilter);
         }
 
         private void FiltersWindow_FiltersSelected(object? sender, List<Filter> e)
@@ -29,7 +37,19 @@ namespace SearchSystem.ViewModels
                 FiltersList.Add(filter);
             }
 
-            _filtersListService.InvokeFiltersAddedEvent();
+            _filtersListService.InvokeFiltersChangedEvent();
+        }
+
+        private bool CanDeleteFilter(object obj)
+        {
+            return obj is Filter;
+        }
+
+        public void DeleteFilter(object obj)
+        {
+            Filter filter = (Filter)obj;
+            FiltersList.Remove(filter);
+            _filtersListService.InvokeFiltersChangedEvent();
         }
     }
 }
