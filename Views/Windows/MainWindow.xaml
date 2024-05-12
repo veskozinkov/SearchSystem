@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SearchSystem"
         xmlns:local2="clr-namespace:SearchSystem.Views.Controls"
         mc:Ignorable="d"
-        Title="Search Project" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Search System" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>

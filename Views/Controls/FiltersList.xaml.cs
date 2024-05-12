@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SearchSystem.Models;
-using SearchSystem.Others.Markers;
 using SearchSystem.ViewModels;
 using SearchSystem.Services.FiltersListServices;
 
@@ -35,7 +22,7 @@ namespace SearchSystem.Views.Controls
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is ListViewItem listViewItem && listViewItem.DataContext is PropertyFilter item)
+            if (sender is ListViewItem listViewItem && listViewItem.DataContext is Filter item)
             {
                 DragDrop.DoDragDrop(listViewItem, new DataObject(DataFormats.Serializable, item), DragDropEffects.Move);
             }
@@ -43,7 +30,7 @@ namespace SearchSystem.Views.Controls
 
         private void ListView_Drop(object sender, DragEventArgs e)
         {
-            if (sender is ListView listView && e.Data.GetData(DataFormats.Serializable) is PropertyFilter droppedData)
+            if (sender is ListView listView && e.Data.GetData(DataFormats.Serializable) is Filter droppedData)
             {
                 if (listView.DataContext is FiltersListViewModel viewModel)
                 {
@@ -52,7 +39,7 @@ namespace SearchSystem.Views.Controls
                         int targetIndex = GetCurrentIndex(e.GetPosition(listView), listView);
                         int droppedDataIndex = viewModel.FiltersList.IndexOf(droppedData);
 
-                        PropertyFilter targetData = viewModel.FiltersList[targetIndex];
+                        Filter targetData = viewModel.FiltersList[targetIndex];
 
                         viewModel.FiltersList[droppedDataIndex] = targetData;
                         viewModel.FiltersList[targetIndex] = droppedData;

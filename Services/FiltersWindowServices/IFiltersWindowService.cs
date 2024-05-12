@@ -1,15 +1,10 @@
-﻿using SearchSystem.Others.Markers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SearchSystem.Models;
 
 namespace SearchSystem.Services.FiltersWindowServices
 {
     interface IFiltersWindowService
     {
         public void CloseWindow();
-        public void InvokeFiltersSelectedEvent(List<PropertyFilter> filters);
+        public void InvokeFiltersSelectedEvent(List<Filter> filters);
     }
 }

@@ -1,15 +1,6 @@
-﻿using SearchSystem.Others.Markers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using SearchSystem.Commands;
 using SearchSystem.Views.Windows;
-using SearchSystem.Models;
 using SearchSystem.Views.Controls;
 using SearchSystem.Database;
 using SearchSystem.Services.MainWindowServices;

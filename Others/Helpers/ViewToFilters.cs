@@ -1,5 +1,4 @@
 ﻿using SearchSystem.Models;
-using SearchSystem.Others.Markers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +12,9 @@ namespace SearchSystem.Others.Helpers
 {
     class ViewToFilters
     {
-        public static List<PropertyFilter> Parse(DynamicFilterView dynamicFilterView)
+        public static List<Filter> Parse(DynamicFilterView dynamicFilterView)
         {
-            List<PropertyFilter> filters = new List<PropertyFilter>();
+            List<Filter> filters = new List<Filter>();
 
             foreach (var filter in dynamicFilterView.FilterPanel.Children)
             {

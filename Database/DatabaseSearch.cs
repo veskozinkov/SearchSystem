@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SearchSystem.Models;
-using SearchSystem.Others.Markers;
 using SearchSystem.ViewModels;
 using SearchSystem.Views.Controls;
 using System;
@@ -19,7 +18,7 @@ namespace SearchSystem.Database
 {
     class DatabaseSearch
     {
-        public static List<dynamic> Filter(ObservableCollection<PropertyFilter> filters)
+        public static List<dynamic> Filter(ObservableCollection<Filter> filters)
         {
             using (var context = new DatabaseContext())
             {
@@ -30,7 +29,7 @@ namespace SearchSystem.Database
             }
         }
 
-        private static List<dynamic> FilterRecords(IEnumerable<dynamic> records, ObservableCollection<PropertyFilter> filters)
+        private static List<dynamic> FilterRecords(IEnumerable<dynamic> records, ObservableCollection<Filter> filters)
         {
             List<dynamic> filteredRecords;
             int numOfSubtractedFilters = -1;

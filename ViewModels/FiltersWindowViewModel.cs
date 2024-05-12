@@ -1,20 +1,10 @@
 ﻿using SearchSystem.Commands;
 using SearchSystem.Models;
 using SearchSystem.Others.Helpers;
-using SearchSystem.Others.Markers;
 using SearchSystem.Views.Controls;
 using SearchSystem.Services.FiltersWindowServices;
-using SearchSystem.Views.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
 using System.Windows.Input;
-using SearchSystem.Services;
 
 namespace SearchSystem.ViewModels
 {
@@ -37,7 +27,7 @@ namespace SearchSystem.ViewModels
         public void ApplyFilters(object obj)
         {
             DynamicFilterView dynamicFilterView = (DynamicFilterView) (obj as StackPanel)!.FindName(nameof(DynamicFilterView));
-            List<PropertyFilter> filters = ViewToFilters.Parse(dynamicFilterView);
+            List<Filter> filters = ViewToFilters.Parse(dynamicFilterView);
 
             _filtersWindowService.InvokeFiltersSelectedEvent(filters);
             _filtersWindowService.CloseWindow();

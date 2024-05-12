@@ -1,5 +1,4 @@
-﻿using SearchSystem.Others.Markers;
-using SearchSystem.Views.Controls;
+﻿using SearchSystem.Views.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;

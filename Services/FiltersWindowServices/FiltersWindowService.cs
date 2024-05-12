@@ -1,11 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using SearchSystem.Others.Markers;
+﻿using SearchSystem.Models;
 using SearchSystem.Views.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SearchSystem.Services.FiltersWindowServices
 {
@@ -23,7 +17,7 @@ namespace SearchSystem.Services.FiltersWindowServices
             _filtersWindow.Close();
         }
 
-        public void InvokeFiltersSelectedEvent(List<PropertyFilter> filters)
+        public void InvokeFiltersSelectedEvent(List<Filter> filters)
         {
             _filtersWindow.InvokeFiltersSelectedEvent(filters);
         }
