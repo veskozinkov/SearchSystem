@@ -33,10 +33,8 @@ namespace SearchSystem.Database
         {
             List<dynamic> filteredRecords = new List<dynamic>();
 
-            for (int i = 0; i < filters.Count(); i++)
+            foreach (Filter filter in filters)
             {
-                Filter filter = (Filter)filters[i];
-
                 if (string.IsNullOrEmpty(filter.PropertyName) || filter.Value == null) continue;
                 records = records.Where(record => MatchesFilter(record, filter.PropertyName, filter.Value)).ToList();
 
