@@ -13,8 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SearchSystem.Models;
 using SearchSystem.Others.Markers;
 using SearchSystem.ViewModels;
+using SearchSystem.Services.FiltersListServices;
 
 namespace SearchSystem.Views.Controls
 {
@@ -23,10 +25,12 @@ namespace SearchSystem.Views.Controls
     /// </summary>
     public partial class FiltersList : UserControl
     {
+        public static event EventHandler<object>? FiltersAdded;
+
         public FiltersList()
         {
             InitializeComponent();
-            DataContext = new FiltersListViewModel();
+            DataContext = new FiltersListViewModel(new FiltersListService(this));
         }
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -63,7 +67,7 @@ namespace SearchSystem.Views.Controls
 
             if (listView.Items.Count > 0)
             {
-                ListViewItem listViewItem = listView.ItemContainerGenerator.ContainerFromIndex(0) as ListViewItem;
+                ListViewItem listViewItem = (listView.ItemContainerGenerator.ContainerFromIndex(0) as ListViewItem)!;
                 Point itemPosition = listViewItem.TranslatePoint(new Point(0, 0), listView);
 
                 if (dropPosition.Y < itemPosition.Y)
@@ -71,7 +75,7 @@ namespace SearchSystem.Views.Controls
                     index = 0;
                 }
 
-                listViewItem = listView.ItemContainerGenerator.ContainerFromIndex(listView.Items.Count - 1) as ListViewItem;
+                listViewItem = (listView.ItemContainerGenerator.ContainerFromIndex(listView.Items.Count - 1) as ListViewItem)!;
                 itemPosition = listViewItem.TranslatePoint(new Point(0, 0), listView);
 
                 if (dropPosition.Y >= itemPosition.Y)
@@ -81,7 +85,7 @@ namespace SearchSystem.Views.Controls
 
                 for (int i = 0; i < listView.Items.Count; i++)
                 {
-                    listViewItem = listView.ItemContainerGenerator.ContainerFromIndex(i) as ListViewItem;
+                    listViewItem = (listView.ItemContainerGenerator.ContainerFromIndex(i) as ListViewItem)!;
                     if (listViewItem != null)
                     {
                         itemPosition = listViewItem.TranslatePoint(new Point(0, 0), listView);
@@ -99,6 +103,11 @@ namespace SearchSystem.Views.Controls
 
 
             return index;
+        }
+
+        public void InvokeFiltersAddedEvent()
+        {
+            FiltersAdded?.Invoke(this, new Object());
         }
     }
 }

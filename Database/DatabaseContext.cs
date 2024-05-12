@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -7,17 +8,26 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SearchSystem.Models;
 using SearchSystem.Others.Enums.Job;
+using SearchSystem.Views.Controls;
 
 namespace SearchSystem.Database
 {
     internal class DatabaseContext : DbContext
     {
-        public DbSet<Job> Jobs { get; set; }
+        public static Type ModelType { get; set; } = typeof(Job);
+
+        public dynamic Records { get; set; }
+
+        public DatabaseContext()
+        {
+            Type genericType = typeof(ConcreteDbSet<>).MakeGenericType(ModelType);
+            Records = Activator.CreateInstance(genericType)!;
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string solutionFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string databaseFile = "Jobs.db";
+            string databaseFile = ModelType.Name + ".db";
             string databasePath = Path.Combine(solutionFolder, databaseFile);
 
             optionsBuilder.UseSqlite($"Data Source={databasePath}");

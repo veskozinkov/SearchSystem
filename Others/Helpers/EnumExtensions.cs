@@ -15,7 +15,7 @@ namespace SearchSystem.Others.Helpers
         {
             DescriptionAttribute[] attributes = (DescriptionAttribute[]) value
                .GetType()
-               .GetField(value.ToString())
+               .GetField(value.ToString())!
                .GetCustomAttributes(typeof(DescriptionAttribute), false);
 
             return attributes.Length > 0 ? attributes[0].Description : string.Empty;
@@ -34,14 +34,14 @@ namespace SearchSystem.Others.Helpers
                 {
                     if (attribute.Description == description)
                     {
-                        return (Enum)field.GetValue(null);
+                        return (Enum)field.GetValue(null)!;
                     }
                 }
                 else
                 {
                     if (field.Name == description)
                     {
-                        return (Enum)field.GetValue(null);
+                        return (Enum)field.GetValue(null)!;
                     }
                 }
             }

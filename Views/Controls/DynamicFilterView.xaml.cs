@@ -15,7 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SearchSystem.Others.Helpers;
+using SearchSystem.Database;
 using SearchSystem.ViewModels;
+using SearchSystem.Models;
 
 namespace SearchSystem.Views.Controls
 {
@@ -24,17 +26,15 @@ namespace SearchSystem.Views.Controls
     /// </summary>
     public partial class DynamicFilterView : UserControl
     {
-        public DynamicFilterView(Type modelType)
+        public DynamicFilterView()
         {
             InitializeComponent();
-
-            DataContext = new DynamicFilterViewModel(modelType);
             PopulateFilters();
         }
 
         private void PopulateFilters()
         {
-            foreach (var element in (DataContext as DynamicFilterViewModel).GenerateFilterUiElements())
+            foreach (var element in PropertyToView.Parse(DatabaseContext.ModelType.GetProperties().ToList()))
             {
                 if (element != null) FilterPanel.Children.Add(element);
             }

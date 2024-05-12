@@ -28,9 +28,9 @@ namespace SearchSystem.Views.Controls
             InitializeComponent();
         }
 
-        public void OnLoad(Type modelType)
+        public void OnLoad()
         {
-            DataContext = new ResultsListViewModel(modelType);
+            DataContext = new ResultsListViewModel();
         }
     }
 }

@@ -14,7 +14,7 @@
 
         <StackPanel x:Name="FilterSection" Grid.Row="0" Orientation="Horizontal" Margin="10"/>
 
-        <Button x:Name="ApplyFilters" Grid.Row="1" Content="Apply" Margin="0 0 0 15" Width="75" Height="25" Click="ApplyFilters_Click">
+        <Button x:Name="ApplyFilters" Grid.Row="1" Content="Apply" Margin="0 0 0 15" Width="75" Height="25" Command="{Binding ApplyFiltersCommand}" CommandParameter="{Binding ElementName=FilterSection}">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>

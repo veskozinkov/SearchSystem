@@ -20,6 +20,18 @@ namespace SearchSystem.Others.Helpers
     {
         private static Regex positiveIntegerRegex = new Regex("[^0-9]+");
 
+        public static List<UIElement> Parse(List<PropertyInfo> properties)
+        {
+            List<UIElement> uIElements = new List<UIElement>();
+
+            foreach (var prop in properties)
+            {
+                uIElements.Add(Parse(new KeyValuePair<string, PropertyInfo>(prop.ToDisplayName(), prop))!);
+            }
+
+            return uIElements;
+        }
+
         public static UIElement? Parse(KeyValuePair<string, PropertyInfo> property)
         {
             if (property.Value.PropertyType.IsEnum)
@@ -102,7 +114,7 @@ namespace SearchSystem.Others.Helpers
                 };
                 textBox.PreviewTextInput += (sender, e) =>
                 {
-                    TextBox textBox = sender as TextBox;
+                    TextBox textBox = (sender as TextBox)!;
 
                     if (textBox.Text.Length == 0)
                     {

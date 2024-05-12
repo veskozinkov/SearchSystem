@@ -25,7 +25,7 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="0" Grid.Row="0" Content="Search" Width="100" Height="50" Click="Search">
+            <Button Grid.Column="0" Grid.Row="0" Content="Search" Width="100" Height="50" Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=FiltersList}">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="35"/>
@@ -33,7 +33,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Grid.Column="1" Grid.Row="0" Content="Filters" Width="100" Height="50" Click="OpenFiltersWindow">
+            <Button Grid.Column="1" Grid.Row="0" Content="Filters" Width="100" Height="50" Command="{Binding OpenFiltersWindowCommand}">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="35"/>
