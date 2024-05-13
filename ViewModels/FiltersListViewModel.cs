@@ -1,12 +1,9 @@
 ﻿using SearchSystem.Commands;
 using SearchSystem.Models;
-using SearchSystem.Others.Helpers;
 using SearchSystem.Services.FiltersListServices;
-using SearchSystem.Views.Controls;
 using SearchSystem.Views.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SearchSystem.ViewModels
