@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SearchSystem.Others.Helpers
+namespace SearchSystem.Others.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class FilterableAttribute : Attribute

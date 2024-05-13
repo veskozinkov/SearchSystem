@@ -16,10 +16,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SearchSystem.Models;
-using SearchSystem.Others.Helpers;
 using SearchSystem.ViewModels;
 using SearchSystem.Others.Converters;
 using SearchSystem.Database;
+using SearchSystem.Others.Extensions;
 
 namespace SearchSystem.Views.Controls
 {

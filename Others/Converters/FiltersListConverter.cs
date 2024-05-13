@@ -1,6 +1,6 @@
 ﻿using SearchSystem.Database;
 using SearchSystem.Models;
-using SearchSystem.Others.Helpers;
+using SearchSystem.Others.Extensions;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;

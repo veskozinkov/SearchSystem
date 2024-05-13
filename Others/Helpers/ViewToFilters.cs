@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
 using SearchSystem.Views.Controls;
+using SearchSystem.Others.Extensions;
 
 namespace SearchSystem.Others.Helpers
 {

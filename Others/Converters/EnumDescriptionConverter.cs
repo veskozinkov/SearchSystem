@@ -1,4 +1,4 @@
-﻿using SearchSystem.Others.Helpers;
+﻿using SearchSystem.Others.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

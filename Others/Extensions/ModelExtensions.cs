@@ -5,8 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using SearchSystem.Others.Attributes;
 
-namespace SearchSystem.Others.Helpers
+namespace SearchSystem.Others.Extensions
 {
     internal static class ModelExtensions
     {

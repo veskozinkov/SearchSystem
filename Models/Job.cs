@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SearchSystem.Others.Enums.Job;
 using System.ComponentModel;
-using SearchSystem.Others.Helpers;
+using SearchSystem.Others.Attributes;
 
 namespace SearchSystem.Models
 {

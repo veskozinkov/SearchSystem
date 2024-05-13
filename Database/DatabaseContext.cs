@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.EntityFrameworkCore;
 using SearchSystem.Models;
-using SearchSystem.Others.Enums.Job;
-using SearchSystem.Views.Controls;
+using SearchSystem.Others.Helpers;
 
 namespace SearchSystem.Database
 {
@@ -35,97 +28,17 @@ namespace SearchSystem.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Job>().Property(e => e.Id).ValueGeneratedOnAdd();
+            var entityBuilder = modelBuilder.Entity(ModelType);
+            var idProperty = entityBuilder.Property("Id");
 
-            var job1 = new Job
-            {
-                Id = -1,
-                City = JobCity.SOFIA,
-                Category = JobCategory.TRADE_SALES,
-                Employment = JobEmployment.FULL_TIME,
-                WithoutExperience = false,
-                RemoteInterview = true,
-                Workplace = JobWorkplace.OFFICE,
-                Position = JobPosition.EXPERT_SPECIALIST,
-                Provider = JobProvider.EMPLOYER,
-                Salary = 5000,
-                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
-                Language = JobLanguage.ENGLISH,
-                PostTime = DateTime.Now.AddDays(-10).Date
-            };
-            modelBuilder.Entity<Job>().HasData(job1);
+            idProperty.ValueGeneratedOnAdd();
 
-            var job2 = new Job
-            {
-                Id = -2,
-                City = JobCity.VARNA,
-                Category = JobCategory.RESTAURANTS_HOTELS_TOURISM,
-                Employment = JobEmployment.PART_TIME,
-                WithoutExperience = false,
-                RemoteInterview = false,
-                Workplace = JobWorkplace.HYBRID,
-                Position = JobPosition.EMPLOYEE_WORKER,
-                Provider = JobProvider.AGENCIES,
-                Salary = 2500,
-                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
-                Language = JobLanguage.BULGARIAN,
-                PostTime = DateTime.Now.AddDays(-15).Date
-            };
-            modelBuilder.Entity<Job>().HasData(job2);
+            /*List<object> records = RandomModelGenerator.GenerateRandomObjects(ModelType, 100);
 
-            var job3 = new Job
+            foreach (object record in records)
             {
-                Id= -3,
-                City = JobCity.PLOVDIV,
-                Category = JobCategory.PRODUCTION,
-                Employment = JobEmployment.FULL_TIME,
-                WithoutExperience = false,
-                RemoteInterview = false,
-                Workplace = JobWorkplace.OFFICE,
-                Position = JobPosition.MANAGEMENT,
-                Provider = JobProvider.EMPLOYER,
-                Salary = 8000,
-                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
-                Language = JobLanguage.BULGARIAN,
-                PostTime = DateTime.Now.AddDays(-5).Date
-            };
-            modelBuilder.Entity<Job>().HasData(job3);
-
-            var job4 = new Job
-            {
-                Id = -4,
-                City = JobCity.BURGAS,
-                Category = JobCategory.ADMINISTRATIVE_OFFICE_BUSINESS,
-                Employment = JobEmployment.FULL_TIME,
-                WithoutExperience = true,
-                RemoteInterview = true,
-                Workplace = JobWorkplace.HOME,
-                Position = JobPosition.EXPERT_SPECIALIST,
-                Provider = JobProvider.EMPLOYER,
-                Salary = 5500,
-                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
-                Language = JobLanguage.ENGLISH,
-                PostTime = DateTime.Now.AddDays(-20).Date
-            };
-            modelBuilder.Entity<Job>().HasData(job4);
-
-            var job5 = new Job
-            {
-                Id= -5,
-                City = JobCity.RUSE,
-                Category = JobCategory.DRIVERS_COURIERS,
-                Employment = JobEmployment.FULL_TIME,
-                WithoutExperience = false,
-                RemoteInterview = false,
-                Workplace = JobWorkplace.OFFICE,
-                Position = JobPosition.EMPLOYEE_WORKER,
-                Provider = JobProvider.EMPLOYER,
-                Salary = 4500,
-                PaidLeave = JobPaidLeave.BETWEEN_20_AND_25_DAYS,
-                Language = JobLanguage.BULGARIAN,
-                PostTime = DateTime.Now.AddDays(-25).Date
-            };
-            modelBuilder.Entity<Job>().HasData(job5);
+                entityBuilder.HasData(record);
+            }*/
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SearchSystem.Others.Helpers;
+﻿using SearchSystem.Others.Attributes;
 using System.ComponentModel;
 
 public enum FilterMode

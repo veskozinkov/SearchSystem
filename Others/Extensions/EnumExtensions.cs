@@ -6,14 +6,15 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using SearchSystem.Others.Attributes;
 
-namespace SearchSystem.Others.Helpers
+namespace SearchSystem.Others.Extensions
 {
     public static class EnumExtensions
     {
         public static string ToDescriptionString<T>(this T value) where T : Enum
         {
-            DescriptionAttribute[] attributes = (DescriptionAttribute[]) value
+            DescriptionAttribute[] attributes = (DescriptionAttribute[])value
                .GetType()
                .GetField(value.ToString())!
                .GetCustomAttributes(typeof(DescriptionAttribute), false);
